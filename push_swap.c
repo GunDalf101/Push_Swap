@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:34:14 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/01 00:00:19 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:45:37 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	dup_detector(t_cdlist **stack_a)
 			comparer = comparer->next;
 		}
 		if (count >= 2)
-			return (ft_printf("Error: duplicate detected!!"), exit(1));
+			return (ft_printerr("Error: duplicate detected!!"), exit(1));
 		compared = compared->next;
 	}
 }
@@ -48,7 +48,7 @@ void	make_list(t_cdlist **stack_a, char **arg)
 	{
 		nums = ft_strjoin(nums, arg[i]);
 		if (ft_strncmp(arg[i], "", 1) == 0 || xstrncmp(arg[i]) == 0)
-			return (ft_printf("Error: Empty argument found!!"), exit(1));
+			return (ft_printerr("Error: Empty argument found!!"), exit(1));
 		nums = ft_strjoin(nums, " ");
 	}
 	nums2 = ft_split(nums, ' ');
@@ -61,30 +61,43 @@ void	make_list(t_cdlist **stack_a, char **arg)
 	dup_detector(stack_a);
 }
 
-void	ac_handler(int ac,char **av, t_cdlist **stack_a)
+void	twofacesort(t_cdlist **stack_a)
 {
 	t_cdlist	*node;
-	int			i;
-	char		**arg;
-	char		**ard;
 
 	node = *stack_a;
-	i = 0;
-	arg = ft_split(av[1], ' ');
-	ard = ft_split(av[2], ' ');
-	while (arg[i])
-		i++;
-	if (i == 1 && !av[2])
-		exit(0);
-	else if (i == 1 && av[2] && av[3])
-		return ;
-	if (((i == 2 && !av[2]) || (i == 1 && !av[3] && ac == 3)) && node->content > node->next->content && (ard == NULL||ard[1] == NULL))
-	{
+	if (ft_lstsize(*stack_a) == 2 && node->content > node->next->content)
 		ra(stack_a);	
-		exit (0);
+}
+
+void	three_lsort(t_cdlist **stack_a)
+{
+	t_cdlist	*node;
+	t_cdlist	*nodext;
+	t_cdlist	*nodext2;
+
+	node = *stack_a;
+	nodext = node->next;
+	nodext2 = nodext->next;
+	if (ft_lstsize(*stack_a) == 3)
+	{
+		if(node->content > nodext->content && nodext->content > nodext2->content)
+		{
+			sa(stack_a);
+			rra(stack_a);
+		}
+		else if (nodext->content > nodext2->content && nodext2->content > node->content)
+		{
+			rra(stack_a);
+			sa(stack_a);
+		}
+		else if (node->content > nodext2->content && nodext2->content > nodext->content)
+			ra(stack_a);
+		else if (nodext2->content > node->content && node->content > nodext->content)
+			sa(stack_a);
+		else if (nodext->content > node->content && node->content > nodext2->content)
+			rra(stack_a);
 	}
-	else if (((i == 2 && !av[2]) || (i == 1 && !av[3] && ac == 3)) && (ard == NULL||ard[1] == NULL))
-		exit (0);
 }
 
 int	main(int ac, char **av)
@@ -96,16 +109,10 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		make_list(&stack_a, av);
-		ac_handler(ac, av, &stack_a);
-		pb(&stack_a, &stack_b);
-		pb(&stack_a, &stack_b);
-		pb(&stack_a, &stack_b);
-		pb(&stack_a, &stack_b);
-		pa(&stack_b, &stack_a);
-		pa(&stack_b, &stack_a);
-		pa(&stack_b, &stack_a);
-		ra(&stack_a);
-		ra(&stack_a);
+		sort_checker(&stack_a);
+		// twofacesort(&stack_a);
+		// three_lsort(&stack_a);
+		sort_stack(&stack_a, &stack_b);
 		node = stack_a;
 		while (node)
 		{

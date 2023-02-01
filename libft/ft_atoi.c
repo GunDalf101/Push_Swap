@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 08:52:23 by mbennani          #+#    #+#             */
-/*   Updated: 2023/01/31 03:39:34 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/01 13:19:50 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	itisspace(const char *str, int *pi)
 		i++;
 	*pi = i;
 	if (str[i] < 48 || str[i] > 57)
-		return (ft_printf("Error: invalid argument"), exit(1), 0);
+		return (ft_printerr("Error: invalid argument"), exit(1), 0);
 	return (count);
 }
 
@@ -55,11 +55,11 @@ int	ft_atoi(const char *str)
 		prv = res;
 		res = res * 10 + (str[i] - 48);
 		if (isoverflow(prv, res) == 1)
-		return (ft_printf("Error: overflow detected number rejected"), exit(1), 0);
+		return (ft_printerr("Error: overflow detected number rejected"), exit(1), 0);
 		i++;
 	}
 	if ((str[i] < 48 || str[i] > 57) && str[i])
-		return (ft_printf("Error: invalid argument"), exit(1), 0);
+		return (ft_printerr("Error: invalid argument"), exit(1), 0);
 	res *= sign;
 	return (res);
 }

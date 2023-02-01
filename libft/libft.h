@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:06:41 by mbennani          #+#    #+#             */
-/*   Updated: 2023/01/31 03:12:39 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:39:15 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_cdlist
 {
-	int				index;
+	int				steps;
 	int				content;
 	struct s_cdlist	*next;
 	struct s_cdlist	*prev;

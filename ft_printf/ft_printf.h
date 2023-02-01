@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 07:57:25 by mbennani          #+#    #+#             */
-/*   Updated: 2023/01/31 01:52:38 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/01 13:18:37 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ void	ft_putunsigned_fd(unsigned int n, int fd, int *returned);
 void	lowerhex(unsigned long int n, int *returned);
 void	upperhex(unsigned long int n, int *returned);
 void	ft_address(void *ptr, int *returned);
+int		ft_printerr(const char *format, ...);
+void	ft_printargerr(int flag, va_list ptr, int *returned);
 
 #endif
