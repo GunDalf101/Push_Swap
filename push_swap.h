@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:34:28 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/01 20:00:50 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/03 19:25:36 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int		maxima(t_cdlist *stack);
 int		minimus(t_cdlist *stack);
 void	sort_stack(t_cdlist **stack_a, t_cdlist **stack_b);
 int		absolute(int num);
+void	three_lsort(t_cdlist **stack_a);
 
 #endif

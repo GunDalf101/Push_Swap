@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:17:28 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/03 02:52:42 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/03 19:28:40 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ void	best_mover(t_cdlist **stack_a, t_cdlist **stack_b)
 	t_cdlist	*tmpb;
 	t_cdlist	*tmpa;
 	t_cdlist	*minb;
+	t_cdlist	*minbbb;
 	t_cdlist	*mina;
 
 	tmpb = *stack_b;
 	tmpa = *stack_a;
 	minb = tmpb;
 	mina = tmpa;
+	minbbb = minb;
 	minsteps = INT32_MAX;
 	while (tmpa)
 	{
@@ -38,6 +40,7 @@ void	best_mover(t_cdlist **stack_a, t_cdlist **stack_b)
 		if (tmpa->steps + minb->steps < minsteps - 1)
 		{
 			minsteps = tmpa->steps + minb->steps;
+			minbbb = minb;
 			mina = tmpa;
 		}
 		tmpa = tmpa->next;
@@ -54,29 +57,29 @@ void	best_mover(t_cdlist **stack_a, t_cdlist **stack_b)
 			rra(stack_a);
 	}
 	//rotate stack b
-	if (minb->pos <= ft_lstsize(*stack_b) / 2)
+	if (minbbb->pos <= ft_lstsize(*stack_b) / 2)
 	{
-		if (minb->content > mina->content)
+		if (minbbb->content > mina->content)
 		{
-			while(minb->next)
+			while(minbbb->next)
 				rb(stack_b);
 		}
-		else if (minb->content < mina->content)
+		else if (minbbb->content < mina->content)
 		{
-			while(minb->prev)
+			while(minbbb->prev)
 				rb(stack_b);
 		}
 	}
-	else if (minb->pos > ft_lstsize(*stack_b) / 2)
+	else if (minbbb->pos > ft_lstsize(*stack_b) / 2)
 	{
-		if (minb->content > mina->content)
+		if (minbbb->content > mina->content)
 		{
-			while(minb->next)
+			while(minbbb->next)
 				rrb(stack_b);
 		}
-		else if (minb->content < mina->content)
+		else if (minbbb->content < mina->content)
 		{
-			while(minb->prev)
+			while(minbbb->prev)
 				rrb(stack_b);
 		}
 	}
@@ -109,7 +112,6 @@ void	the_path_finder(t_cdlist **stack_a, t_cdlist **stack_b)
 			tmp->steps = ft_lstsize(*stack_b) - pos;
 		tmp->pos = pos;
 		pos++;
-		// printf ("tempa->%d\n", tmp->steps);
 		tmp = tmp->next;
 	}
 	best_mover(stack_a, stack_b);
@@ -127,4 +129,5 @@ void	sort_stack(t_cdlist **stack_a, t_cdlist **stack_b)
 	pb(stack_a, stack_b);
 	while(ft_lstsize(*stack_a) > 3)
 		the_path_finder(stack_a, stack_b);
+	three_lsort(stack_a);
 }

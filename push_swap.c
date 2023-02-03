@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:34:14 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/03 02:52:56 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/03 19:21:49 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,33 +113,33 @@ int	main(int ac, char **av)
 		// twofacesort(&stack_a);
 		// three_lsort(&stack_a);
 		sort_stack(&stack_a, &stack_b);
-		// node = stack_a;
-		// while (node)
-		// {
-		// 	ft_printf("data -> %d\n", node->content);
-		// 	node = node->next;
-		// }
-		// // ft_printf("\n");
-		// // node = ft_lstlast(stack_a);
-		// // while (node)
-		// // {
-		// // 	ft_printf("data -> %d\n", node->content);
-		// // 	node = node->prev;
-		// // }
+		node = stack_a;
+		while (node)
+		{
+			ft_printf("data -> %d\n", node->content);
+			node = node->next;
+		}
 		// ft_printf("\n");
-		// node = stack_b;
+		// node = ft_lstlast(stack_a);
 		// while (node)
 		// {
 		// 	ft_printf("data -> %d\n", node->content);
-		// 	node = node->next;
+		// 	node = node->prev;
 		// }
-		// // ft_printf("\n");
-		// // node = ft_lstlast(stack_b);
-		// // while (node)
-		// // {
-		// // 	ft_printf("data -> %d\n", node->content);
-		// // 	node = node->prev;
-		// // }
+		ft_printf("\n");
+		node = stack_b;
+		while (node)
+		{
+			ft_printf("data -> %d\n", node->content);
+			node = node->next;
+		}
+		// ft_printf("\n");
+		// node = ft_lstlast(stack_b);
+		// while (node)
+		// {
+		// 	ft_printf("data -> %d\n", node->content);
+		// 	node = node->prev;
+		// }
 	}
 	return (0);
 }
