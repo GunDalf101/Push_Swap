@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:10:14 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/01 19:39:06 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/04 00:04:00 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@ int xstrncmp(char *av)
 	return (1);
 }
 
-int	maxima(t_cdlist *stack)
+t_cdlist	*maxima(t_cdlist *stack)
 {
-	int	max;
+	t_cdlist	*max;
 	
-	max = stack->content;
+	max = stack;
 	while(stack)
 	{
-		if (stack->content > max)
-			max = stack->content;
+		if (stack->content > max->content)
+			max = stack;
 		stack = stack->next;
 	}
-	printf("the max is %d\n", max);
 	return (max);
 }
 
@@ -48,7 +47,6 @@ int	minimus(t_cdlist *stack)
 			min = stack->content;
 		stack = stack->next;
 	}
-	printf("the min is %d\n", min);
 	return (min);
 }
 

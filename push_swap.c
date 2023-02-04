@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:34:14 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/03 19:21:49 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/04 03:47:09 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	main(int ac, char **av)
 		node = stack_a;
 		while (node)
 		{
-			ft_printf("data -> %d\n", node->content);
+			ft_printf("dataa -> %d\n", node->content);
 			node = node->next;
 		}
 		// ft_printf("\n");
@@ -130,7 +130,7 @@ int	main(int ac, char **av)
 		node = stack_b;
 		while (node)
 		{
-			ft_printf("data -> %d\n", node->content);
+			ft_printf("datab -> %d\n", node->content);
 			node = node->next;
 		}
 		// ft_printf("\n");
