@@ -6,7 +6,7 @@
 #    By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/14 11:46:17 by mbennani          #+#    #+#              #
-#    Updated: 2022/10/23 20:29:35 by mbennani         ###   ########.fr        #
+#    Updated: 2023/02/05 17:11:53 by mbennani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ $(NAME):$(OBJS)
 	ar rc $(NAME) $(OBJS)
 
 bonus:$(BNS_OBJS) all
-	ar rc $(NAME) $(BNS_OBJS)
+	@ar rc $(NAME) $(BNS_OBJS)
 
 clean:
 	rm -f $(OBJS) $(BNS_OBJS)

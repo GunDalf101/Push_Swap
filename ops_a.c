@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_a.c                                             :+:      :+:    :+:   */
+/*   ops_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 06:00:15 by mbennani          #+#    #+#             */
-/*   Updated: 2023/01/31 17:56:30 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/05 16:44:27 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	protecpusha(t_cdlist **stack_b, t_cdlist **stack_a, int *listaempty, int *listbempty)
+void	protecpusha(t_cdlist **stack_b, t_cdlist **stack_a, \
+int *listaempty, int *listbempty)
 {
 	t_cdlist	*node;
 
@@ -24,7 +25,6 @@ void	protecpusha(t_cdlist **stack_b, t_cdlist **stack_a, int *listaempty, int *l
 	else if (!node->next)
 		*listaempty = 2;
 }
-
 
 void	pb(t_cdlist **stack_a, t_cdlist **stack_b)
 {

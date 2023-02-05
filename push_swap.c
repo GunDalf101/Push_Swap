@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:34:14 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/05 01:27:24 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/05 17:31:12 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	dup_detector(t_cdlist **stack_a)
 			comparer = comparer->next;
 		}
 		if (count >= 2)
-			return (ft_printerr("Error: duplicate detected!!"), exit(1));
+			return (ft_lstclear(stack_a), \
+			ft_printerr("Error: duplicate detected!!"), exit(1));
 		compared = compared->next;
 	}
 }
@@ -38,9 +39,9 @@ void	dup_detector(t_cdlist **stack_a)
 void	make_list(t_cdlist **stack_a, char **arg)
 {
 	t_cdlist	*node;
-	char		*nums;
 	char		**nums2;
 	int			i;
+	char		*nums;
 
 	i = 0;
 	nums = ft_strdup("");
@@ -48,7 +49,8 @@ void	make_list(t_cdlist **stack_a, char **arg)
 	{
 		nums = ft_strjoin(nums, arg[i]);
 		if (ft_strncmp(arg[i], "", 1) == 0 || xstrncmp(arg[i]) == 0)
-			return (ft_printerr("Error: Empty argument found!!"), exit(1));
+			return (free(nums), \
+			ft_printerr("Error: Empty argument found!!"), exit(1));
 		nums = ft_strjoin(nums, " ");
 	}
 	nums2 = ft_split(nums, ' ');
@@ -57,8 +59,10 @@ void	make_list(t_cdlist **stack_a, char **arg)
 	{
 		node = ft_lstnew(ft_atoi(nums2[i]));
 		ft_lstadd_back(stack_a, node);
+		free(nums2[i]);
 	}
 	dup_detector(stack_a);
+	return (free(nums2), free(nums));
 }
 
 void	twofacesort(t_cdlist **stack_a)
@@ -67,7 +71,7 @@ void	twofacesort(t_cdlist **stack_a)
 
 	node = *stack_a;
 	if (ft_lstsize(*stack_a) == 2 && node->content > node->next->content)
-		ra(stack_a);	
+		ra(stack_a);
 }
 
 void	three_lsort(t_cdlist **stack_a)
@@ -81,28 +85,22 @@ void	three_lsort(t_cdlist **stack_a)
 	nodext2 = nodext->next;
 	if (ft_lstsize(*stack_a) == 3)
 	{
-		if(node->content > nodext->content && nodext->content > nodext2->content)
-		{
-			sa(stack_a);
-			rra(stack_a);
-		}
-		else if (nodext->content > nodext2->content && nodext2->content > node->content)
-		{
-			rra(stack_a);
-			sa(stack_a);
-		}
-		else if (node->content > nodext2->content && nodext2->content > nodext->content)
+		if (node->content > nodext->content && \
+		nodext->content > nodext2->content)
+			sa_rra_or (stack_a, 0);
+		else if (nodext->content > nodext2->content && \
+		nodext2->content > node->content)
+			sa_rra_or (stack_a, 1);
+		else if (node->content > nodext2->content && \
+		nodext2->content > nodext->content)
 			ra(stack_a);
-		else if (nodext2->content > node->content && node->content > nodext->content)
+		else if (nodext2->content > node->content && \
+		node->content > nodext->content)
 			sa(stack_a);
-		else if (nodext->content > node->content && node->content > nodext2->content)
+		else if (nodext->content > node->content && \
+		node->content > nodext2->content)
 			rra(stack_a);
 	}
-}
-
-void lek()
-{
-	system("leaks push_swap");
 }
 
 int	main(int ac, char **av)
@@ -111,41 +109,17 @@ int	main(int ac, char **av)
 	t_cdlist	*stack_b;
 	t_cdlist	*node;
 
-	atexit(lek);
 	if (ac > 1)
 	{
 		make_list(&stack_a, av);
 		sort_checker(&stack_a);
-		// twofacesort(&stack_a);
-		// three_lsort(&stack_a);
+		if (ac == 3)
+			twofacesort(&stack_a);
+		if (ac == 4)
+			return (three_lsort(&stack_a), 0);
 		sort_stack(&stack_a, &stack_b);
-		// node = stack_a;
-		// while (node)
-		// {
-		// 	ft_printf("dataa -> %d\n", node->content);
-		// 	node = node->next;
-		// }
-		// // ft_printf("\n");
-		// // node = ft_lstlast(stack_a);
-		// // while (node)
-		// // {
-		// // 	ft_printf("data -> %d\n", node->content);
-		// // 	node = node->prev;
-		// // }
-		// ft_printf("\n");
-		// node = stack_b;
-		// while (node)
-		// {
-		// 	ft_printf("datab -> %d\n", node->content);
-		// 	node = node->next;
-		// }
-		// // ft_printf("\n");
-		// // node = ft_lstlast(stack_b);
-		// // while (node)
-		// // {
-		// // 	ft_printf("data -> %d\n", node->content);
-		// // 	node = node->prev;
-		// // }
+		ft_lstclear(&stack_a);
+		ft_lstclear(&stack_b);
 	}
 	return (0);
 }

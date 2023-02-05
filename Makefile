@@ -6,7 +6,9 @@ SOURCES = push_swap.c \
 		usables.c \
 		sort_check.c \
 		algorithm.c \
-		fake_ops.c
+		fake_ops.c \
+		algo_extention.c \
+		algo_utils.c
 OBJECTS = $(SOURCES:.c=.o)
 INCLUDES = push_swap.h
 
@@ -18,23 +20,25 @@ PRINTF = ft_printf/libftprintf.a
 all: libft ft_printf $(NAME)
 
 $(NAME):$(OBJECTS)
-	$(CC) -o $@ $(OBJECTS) $(LIBFT) $(PRINTF)
+	$(CC) -o $@ $(OBJECTS) $(CFLAGS) $(LIBFT) $(PRINTF)
 
 %.o: %.c push_swap.h
 	$(CC) -c $<
 
+libft:
+	@make -C libft bonus
+
 ft_printf:
 	@make -C ft_printf
-libft:
-	@make -C libft
 
 clean:
 	rm -f $(OBJECTS)
 	@make -C ft_printf clean
+	@make -C libft clean
 	
 fclean: clean
-	rm -f server client ft_printf/ft_printf.a
+	rm -f server client ft_printf/ft_printf.a libft/libft.a
 
 re: fclean all
 
-.PHONY: all bonus ft_printf clean fclean re
+.PHONY: all bonus ft_printf libft clean fclean re

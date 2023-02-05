@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 01:02:56 by mbennani          #+#    #+#             */
-/*   Updated: 2022/10/23 20:17:29 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/05 17:18:45 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	valinit(size_t *i, size_t *j, int *id)
 	*id = -1;
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	size_t	i;
 	size_t	j;

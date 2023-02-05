@@ -6,13 +6,13 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:57:07 by mbennani          #+#    #+#             */
-/*   Updated: 2022/10/21 16:33:47 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/05 17:16:38 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char		*str;
 	size_t		l1;
@@ -29,5 +29,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str = str + l1;
 	str = ft_memmove(str, s2, l2 + 1);
 	str = str - l1;
+	free(s1);
 	return (str);
 }
