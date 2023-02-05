@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:34:14 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/04 03:47:09 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/05 01:27:24 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,18 @@ void	three_lsort(t_cdlist **stack_a)
 	}
 }
 
+void lek()
+{
+	system("leaks push_swap");
+}
+
 int	main(int ac, char **av)
 {
 	t_cdlist	*stack_a;
 	t_cdlist	*stack_b;
 	t_cdlist	*node;
 
+	atexit(lek);
 	if (ac > 1)
 	{
 		make_list(&stack_a, av);
@@ -113,33 +119,33 @@ int	main(int ac, char **av)
 		// twofacesort(&stack_a);
 		// three_lsort(&stack_a);
 		sort_stack(&stack_a, &stack_b);
-		node = stack_a;
-		while (node)
-		{
-			ft_printf("dataa -> %d\n", node->content);
-			node = node->next;
-		}
-		// ft_printf("\n");
-		// node = ft_lstlast(stack_a);
+		// node = stack_a;
 		// while (node)
 		// {
-		// 	ft_printf("data -> %d\n", node->content);
-		// 	node = node->prev;
+		// 	ft_printf("dataa -> %d\n", node->content);
+		// 	node = node->next;
 		// }
-		ft_printf("\n");
-		node = stack_b;
-		while (node)
-		{
-			ft_printf("datab -> %d\n", node->content);
-			node = node->next;
-		}
+		// // ft_printf("\n");
+		// // node = ft_lstlast(stack_a);
+		// // while (node)
+		// // {
+		// // 	ft_printf("data -> %d\n", node->content);
+		// // 	node = node->prev;
+		// // }
 		// ft_printf("\n");
-		// node = ft_lstlast(stack_b);
+		// node = stack_b;
 		// while (node)
 		// {
-		// 	ft_printf("data -> %d\n", node->content);
-		// 	node = node->prev;
+		// 	ft_printf("datab -> %d\n", node->content);
+		// 	node = node->next;
 		// }
+		// // ft_printf("\n");
+		// // node = ft_lstlast(stack_b);
+		// // while (node)
+		// // {
+		// // 	ft_printf("data -> %d\n", node->content);
+		// // 	node = node->prev;
+		// // }
 	}
 	return (0);
 }

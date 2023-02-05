@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:34:28 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/04 00:03:39 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/04 22:26:32 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	fake_rra(t_cdlist **stack_a);
 void	fake_ra(t_cdlist **stack_a);
 void	fake_rrb(t_cdlist **stack_a);
 void	fake_rb(t_cdlist **stack_a);
+t_cdlist	*minimus2_0(t_cdlist *stack);
 t_cdlist	*maxima(t_cdlist *stack);
 
 
