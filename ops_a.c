@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 06:00:15 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/05 16:44:27 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/08 23:31:07 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	sa(t_cdlist **stack_a)
 	nodo = node->next;
 	node->next = nodo->next;
 	nodo->next = node;
-	node->next->prev = node;
+	if (node->next)
+		node->next->prev = node;
 	node->prev = nodo;
 	nodo->prev = NULL;
 	*stack_a = nodo;

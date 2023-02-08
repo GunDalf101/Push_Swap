@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:04:54 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/05 14:37:23 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:07:50 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void	pos_updater(t_cdlist **stack)
 	}
 }
 
-void	world_vs_minsteps(t_cdlist **stack_a, t_cdlist **stack_b, \
-t_helper *container, int comparer)
+void	world_vs_minsteps(t_helper *container, int comparer)
 {
 	if (comparer < container->minsteps)
 	{
@@ -56,26 +55,24 @@ void	b_iterator(t_helper *container, t_cdlist **stack_b)
 	}
 }
 
-void	min_locker(t_cdlist **stack_a, t_cdlist **stack_b, t_helper *container)
+void	min_locker(t_helper *container)
 {
 	if (container->tmpa->pos <= container->sizea / 2 && container->tmpmin->pos \
 	<= container->sizeb / 2 && container->tmpa->pos > container->tmpmin->pos)
-		world_vs_minsteps (stack_a, stack_b, container, container->tmpa->steps);
+		world_vs_minsteps (container, container->tmpa->steps);
 	else if (container->tmpa->pos <= container->sizea / 2 && container->\
 	tmpmin->pos <= container->sizeb / 2 && container->tmpa->pos <= \
 	container->tmpmin->pos)
-		world_vs_minsteps (stack_a, stack_b, container, container->tmpmin->\
-		steps);
+		world_vs_minsteps (container, container->tmpmin->steps);
 	else if (container->tmpa->pos > container->sizea / 2 && container->tmpmin->\
 	pos > container->sizeb / 2 && (container->sizea - container->tmpa->pos) >= \
 	(container->sizeb - container->tmpmin->pos))
-		world_vs_minsteps (stack_a, stack_b, container, container->tmpa->steps);
+		world_vs_minsteps (container, container->tmpa->steps);
 	else if (container->tmpa->pos > container->sizea / 2 && container->tmpmin->\
 	pos > container->sizeb / 2 && (container->sizea - container->tmpa->pos) < \
 	(container->sizeb - container->tmpmin->pos))
-		world_vs_minsteps (stack_a, stack_b, container, \
-		container->tmpmin->steps);
+		world_vs_minsteps (container, container->tmpmin->steps);
 	else
-		world_vs_minsteps (stack_a, stack_b, container, \
-		container->tmpa->steps + container->tmpmin->steps);
+		world_vs_minsteps (container, container->tmpa->steps + \
+		container->tmpmin->steps);
 }

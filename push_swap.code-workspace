@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "push_swap",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"push_swap.h": "c",
+			"ft_printf.h": "c",
+			"get_next_line_bonus.h": "c"
+		}
+	}
+}

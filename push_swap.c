@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:34:14 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/05 17:31:12 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/08 23:32:43 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	dup_detector(t_cdlist **stack_a)
 		}
 		if (count >= 2)
 			return (ft_lstclear(stack_a), \
-			ft_printerr("Error: duplicate detected!!"), exit(1));
+			ft_printerr("Error\n"), exit(1));
 		compared = compared->next;
 	}
 }
@@ -50,7 +50,7 @@ void	make_list(t_cdlist **stack_a, char **arg)
 		nums = ft_strjoin(nums, arg[i]);
 		if (ft_strncmp(arg[i], "", 1) == 0 || xstrncmp(arg[i]) == 0)
 			return (free(nums), \
-			ft_printerr("Error: Empty argument found!!"), exit(1));
+			ft_printerr("Error\n"), exit(1));
 		nums = ft_strjoin(nums, " ");
 	}
 	nums2 = ft_split(nums, ' ');
@@ -72,6 +72,7 @@ void	twofacesort(t_cdlist **stack_a)
 	node = *stack_a;
 	if (ft_lstsize(*stack_a) == 2 && node->content > node->next->content)
 		ra(stack_a);
+	exit (0);
 }
 
 void	three_lsort(t_cdlist **stack_a)
@@ -107,7 +108,6 @@ int	main(int ac, char **av)
 {
 	t_cdlist	*stack_a;
 	t_cdlist	*stack_b;
-	t_cdlist	*node;
 
 	if (ac > 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 12:01:28 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/05 15:07:36 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:54:47 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ t_helper *container)
 	}
 }
 
-void	ra_rra_mover(t_cdlist **stack_a, t_cdlist **stack_b, \
-t_helper *container)
+void	ra_rra_mover(t_cdlist **stack_a, t_helper *container)
 {
 	if (container->mina->pos <= container->sizea / 2)
 	{
@@ -68,8 +67,7 @@ t_helper *container)
 	}
 }
 
-void	rb_rrb_mover(t_cdlist **stack_a, t_cdlist **stack_b, \
-t_helper *container)
+void	rb_rrb_mover(t_cdlist **stack_b, t_helper *container)
 {
 	if (container->minb->pos <= container->sizeb / 2 && \
 	container->minb->content > container->mina->content)

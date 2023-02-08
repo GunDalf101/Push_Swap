@@ -6,7 +6,7 @@
 #    By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 07:50:23 by mbennani          #+#    #+#              #
-#    Updated: 2022/11/01 16:13:00 by mbennani         ###   ########.fr        #
+#    Updated: 2023/02/08 19:47:30 by mbennani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all: $(NAME)
 	cc $(FLAGS) -c $<
 
 $(NAME):$(OBJS)
-	ar rc $(NAME) $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 
 clean:
 	rm -f $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:17:28 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/05 17:15:45 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:07:21 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,17 @@ void	best_mover(t_cdlist **stack_a, t_cdlist **stack_b)
 	while (container->tmpa)
 	{
 		b_iterator(container, stack_b);
-		min_locker(stack_a, stack_b, container);
+		min_locker(container);
 		container->tmpa = container->tmpa->next;
 	}
 	rr_rrr_mover(stack_a, stack_b, container);
-	ra_rra_mover(stack_a, stack_b, container);
-	rb_rrb_mover(stack_a, stack_b, container);
+	ra_rra_mover(stack_a, container);
+	rb_rrb_mover(stack_b, container);
 	free(container);
 }
 
 void	the_path_finder(t_cdlist **stack_a, t_cdlist **stack_b)
 {
-	t_cdlist	*tmp;
-	int			pos;
-
 	pos_updater(stack_a);
 	pos_updater(stack_b);
 	best_mover(stack_a, stack_b);
@@ -101,7 +98,6 @@ void	sort_finalizer(t_cdlist **stack_a, t_cdlist **stack_b, int final_sizea)
 void	sort_stack(t_cdlist **stack_a, t_cdlist **stack_b)
 {
 	t_cdlist	*tmp;
-	int			pos;
 	t_cdlist	*max;
 	int			final_sizea;
 
