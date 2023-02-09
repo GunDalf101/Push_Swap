@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 01:02:56 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/05 17:18:45 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/09 22:26:04 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*wordput(const char *str, size_t start, size_t finish)
 	i = 0;
 	word = malloc((finish - start + 1) * sizeof(char));
 	if (!word)
-		return (NULL);
+		return (ft_printerr("Allocation Failed !!!\n"), exit(1), NULL);
 	while (start < finish)
 		word[i++] = str[start++];
 	word[i] = '\0';
@@ -80,7 +80,7 @@ char	**ft_split(char *s, char c)
 		return (0);
 	doublestr = malloc((wordcounter(s, c) + 1) * sizeof(char *));
 	if (!doublestr)
-		return (NULL);
+		return (ft_printerr("Allocation Failed !!!\n"), exit(1), NULL);
 	while (++i <= ft_strlen(s))
 	{
 		if (s[i] != c && id < 0)

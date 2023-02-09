@@ -6,7 +6,7 @@
 /*   By: mbennani <mbennani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:34:14 by mbennani          #+#    #+#             */
-/*   Updated: 2023/02/08 23:32:43 by mbennani         ###   ########.fr       */
+/*   Updated: 2023/02/09 20:31:47 by mbennani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,9 @@ int	main(int ac, char **av)
 	{
 		make_list(&stack_a, av);
 		sort_checker(&stack_a);
-		if (ac == 3)
+		if (ft_lstsize(stack_a) == 2)
 			twofacesort(&stack_a);
-		if (ac == 4)
+		if (ft_lstsize(stack_a) == 3)
 			return (three_lsort(&stack_a), 0);
 		sort_stack(&stack_a, &stack_b);
 		ft_lstclear(&stack_a);
